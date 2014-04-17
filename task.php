@@ -26,10 +26,10 @@ class Task {
 			return new WP_Error( 'hm_backdrop_scheduled', __( 'Task is already scheduled to run', 'hm_backdrop' ) );
 		}
 
-		$data = [
+		$data = array(
 			'callback' => $this->callback,
 			'params' => $this->params
-		];
+		);
 		set_transient( 'hm_backdrop-' . $this->key, $data, 300 );
 		add_action( 'shutdown', array( $this, 'spawn_server' ) );
 
@@ -51,16 +51,16 @@ class Task {
 
 	public function spawn_server() {
 		$server_url = admin_url( 'admin-ajax.php' );
-		$data = [
+		$data = array(
 			'action' => 'hm_backdrop_run',
 			'key'    => $this->key,
-		];
-		$args = [
+		);
+		$args = array(
 			'body' => $data,
 			'timeout' => 0.01,
 			'blocking' => false,
 			'sslverify' => apply_filters( 'https_local_ssl_verify', true ),
-		];
+		);
 		wp_remote_post( $server_url, $args );
 		return true;
 	}
