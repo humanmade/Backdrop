@@ -21,7 +21,7 @@ class Task {
 	}
 
 	public function schedule() {
-		delete_transient( 'hm_backdrop-' . $this->key );
+
 		if ( $this->is_scheduled() ) {
 			return new WP_Error( 'hm_backdrop_scheduled', __( 'Task is already scheduled to run', 'hm_backdrop' ) );
 		}
