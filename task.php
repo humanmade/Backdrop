@@ -1,10 +1,6 @@
 <?php
 
-namespace HM\Backdrop;
-
-use WP_Error;
-
-class Task {
+class HM_Backdrop_Task {
 	protected $key;
 	protected $callback;
 	protected $params = array();
