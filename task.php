@@ -70,6 +70,6 @@ class Task {
 	}
 
 	protected function get_unique_id() {
-		return substr( sha1( serialize( $this->callback ) . serialize( $this->params ) ), -33 );
+		return substr( sha1( serialize( $this->callback ) . serialize( $this->params ) ), -28 );
 	}
 }
