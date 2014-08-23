@@ -66,6 +66,6 @@ class HM_Backdrop_Task {
 	}
 
 	protected function get_unique_id() {
-		return sha1( serialize( $this->callback ) . serialize( $this->params ) );
+		return substr( sha1( serialize( $this->callback ) . serialize( $this->params ) ), -28 );
 	}
 }
