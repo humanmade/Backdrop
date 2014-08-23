@@ -27,7 +27,7 @@ class HM_Backdrop_Server {
 			$class = get_called_class();
 		}
 
-		return $class::spawn_run( $class );
+		return call_user_func( array( $class, 'spawn_run' ), $class );
 	}
 
 	protected static function spawn_run( $class ) {
