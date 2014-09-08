@@ -1,0 +1,11 @@
+{
+    "name": "hm/backdrop",
+    "description": "Backdrop is a simple library that does one thing: allows you to run one-off tasks in the background.",
+    "license": "GPL v2",
+    "minimum-stability": "stable",
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {"HM\\Backdrop\\": "lib/"}
+    }
+}
