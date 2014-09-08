@@ -1,9 +1,6 @@
 <?php
-namespace HM\Backdrop;
 
-use WP_Error;
-
-class Server {
+class HM_Backdrop_Server {
 	public function run() {
 		if ( empty( $_POST['key'] ) ) {
 			return new WP_Error( 'hm_backdrop_no_key', __( 'No key supplied', 'hm_backdrop' ) );
@@ -25,7 +22,16 @@ class Server {
 	}
 
 	public static function spawn() {
-		$server = new static();
+		$class = get_class();
+		if ( function_exists( 'get_called_class' ) ) {
+			$class = get_called_class();
+		}
+
+		return call_user_func( array( $class, 'spawn_run' ), $class );
+	}
+
+	protected static function spawn_run( $class ) {
+		$server = new $class();
 		$server->run();
 		exit;
 	}

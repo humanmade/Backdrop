@@ -83,6 +83,31 @@ Either `true`, or a `WP_Error` on failure. The error object will indicate the
 type of error; typically this is a `hm_backdrop_not_scheduled` if the task
 hasn't been scheduled.
 
+## Compatibility
+Backdrop is compatible with PHP 5.2 and upwards.
+
+### PHP 5.2
+Use the `HM_Backdrop_Task` class (and `HM_Backdrop_Server`).
+
+**Important note:** If subclassing `HM_Backdrop_Server` with 5.2 compatibility,
+you *must* reimplement the `spawn` method, as PHP 5.2 does not include late
+static bindings. This is automatically handled for 5.3+.
+
+Here's a minimal implementation that you can use:
+
+```
+class MyBackdrop_Server extends HM_Backdrop_Server {
+	public static function spawn() {
+		return self::spawn_run( __CLASS__ );
+	}
+}
+```
+
+### PHP 5.3+
+Use the `HM\Backdrop\Task` class (and `HM\Backdrop\Server`). You can also import
+the classes with the `use` keyword; for example, `use HM\Backdrop\Task` will
+allow you to create tasks with `new Task`.
+
 ## License
 Backdrop is licensed under the GPL version 2.
 
