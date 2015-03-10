@@ -55,7 +55,7 @@ class HM_Backdrop_Task {
 			'body' => $data,
 			'timeout' => 0.01,
 			'blocking' => false,
-			'sslverify' => apply_filters( 'https_local_ssl_verify', true ),
+			'sslverify' => apply_filters( 'https_local_ssl_verify', false ),
 		);
 		wp_remote_post( $server_url, $args );
 		return true;
